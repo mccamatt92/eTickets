@@ -1,11 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 namespace eTickets.Models
 {
     public class Cinema
     {
         [Key]
-        public int CinemaId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Cinema Logo")]
         [Required(ErrorMessage = "Cinema logo is required")]

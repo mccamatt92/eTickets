@@ -5,11 +5,11 @@ namespace eTickets.Models
     public class Producer
     {
         [Key]
-        public int ProcudcerId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Profile Picture")]
         [Required(ErrorMessage = "Profile Picture is required")]
-        public string ProfilePictureUrl { get; set; }
+        public string ProfilePictureURL { get; set; }
 
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "Full Name is required")]
