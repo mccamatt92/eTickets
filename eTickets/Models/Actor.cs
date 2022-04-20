@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
 {
-    public class Actor :IEntityBase
+    public class Actor : IEntityBase
     {
         [Key]
         public int Id { get; set; }

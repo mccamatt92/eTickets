@@ -1,4 +1,5 @@
 ﻿using eTickets.Data.Base;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
@@ -22,6 +23,7 @@ namespace eTickets.Models
         public string Bio { get; set; }
 
         //Relationships
+        [ValidateNever]
         public List<Movie> Movies { get; set; }
     }
 }

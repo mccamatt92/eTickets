@@ -1,7 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using eTickets.Data.Base;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
+
 namespace eTickets.Models
 {
-    public class Cinema
+    public class Cinema : IEntityBase
     {
         [Key]
         public int Id { get; set; }
@@ -19,6 +22,7 @@ namespace eTickets.Models
         public string Description { get; set; }
 
         //Relationships
+        [ValidateNever]
         public List<Movie> Movies { get; set; }
     }
 }

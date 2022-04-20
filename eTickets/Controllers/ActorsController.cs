@@ -1,8 +1,6 @@
-﻿using eTickets.Data;
-using eTickets.Data.Services;
+﻿using eTickets.Data.Services;
 using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Controllers
 {
@@ -13,12 +11,6 @@ namespace eTickets.Controllers
         public ActorsController(IActorsService service)
         {
             _service = service;
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            var data = await _service.GetAllAsync();
-            return View(data);
         }
 
         //Get: Actors/Create
@@ -35,6 +27,24 @@ namespace eTickets.Controllers
                 return View(actor);
             }
             await _service.AddAsync(actor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Actors/Delete/1
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null) return View("NotFound");
+            return View(actorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -66,23 +76,10 @@ namespace eTickets.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //Get: Actors/Delete/1
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Index()
         {
-            var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("NotFound");
-            return View(actorDetails);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var actorDetails = await _service.GetByIdAsync(id);
-            if (actorDetails == null) return View("NotFound");
-
-            await _service.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            var data = await _service.GetAllAsync();
+            return View(data);
         }
     }
 }
-

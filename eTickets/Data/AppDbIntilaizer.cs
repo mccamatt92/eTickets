@@ -60,7 +60,6 @@ namespace eTickets.Data
                             FullName = "Actor 1",
                             Bio = "This is the Bio of the first actor",
                             ProfilePictureURL = "http://dotnethow.net/images/actors/actor-1.jpeg"
-
                         },
                         new Actor()
                         {
@@ -99,7 +98,6 @@ namespace eTickets.Data
                             FullName = "Producer 1",
                             Bio = "This is the Bio of the first actor",
                             ProfilePictureURL = "http://dotnethow.net/images/producers/producer-1.jpeg"
-
                         },
                         new Producer()
                         {
@@ -251,7 +249,6 @@ namespace eTickets.Data
                             MovieId = 3
                         },
 
-
                         new Actor_Movie()
                         {
                             ActorId = 2,
@@ -267,7 +264,6 @@ namespace eTickets.Data
                             ActorId = 4,
                             MovieId = 4
                         },
-
 
                         new Actor_Movie()
                         {
@@ -289,7 +285,6 @@ namespace eTickets.Data
                             ActorId = 5,
                             MovieId = 5
                         },
-
 
                         new Actor_Movie()
                         {
@@ -310,8 +305,6 @@ namespace eTickets.Data
                     context.SaveChanges();
                 }
             }
-
-        }
-
         }
     }
+}
