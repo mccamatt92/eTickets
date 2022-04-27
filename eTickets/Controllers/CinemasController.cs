@@ -19,6 +19,14 @@ namespace eTickets.Controllers
             return View();
         }
 
+        //Get: Cinemas/Details/1
+        public async Task<IActionResult> Details(int id)
+        {
+            var cinemaDetails = await _service.GetByIdAsync(id);
+            if (cinemaDetails == null) return View("NotFound");
+            return View(cinemaDetails);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([Bind("Logo,Name,Description")] Cinema cinema)
         {
